@@ -468,7 +468,10 @@ export default class Armature{
         if(this.visible && this.alpha > 0){
             context.save();
             context.translate(this.x,this.y);
-            for(let i =0; i< this.boneList.length; i++){
+            // Kuro-P: 骨骼从脚向头渲染(最后绘制头部)，否则脖子部分的蒙皮会盖住头部的蒙皮，L状态下尤其明显
+            // Kuro-P: 这个渲染次序现在还是有问题的，一旦给全身用了蒙皮，腿部的渲染会盖过上身
+            // Kuro-P: 手动指定渲染次序？
+            for(let i =this.boneList.length; i>=0; i--){
                 this.boneList[i].display._render(context);
             }
             context.restore();

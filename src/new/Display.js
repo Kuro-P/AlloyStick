@@ -72,6 +72,9 @@ export default class Display extends Instance{
     }
 
     //对实时换装的功能的支持
+    // Kuro-P: 更改图片时，由于 在图片上clip的参数与在canvas上绘制的图片大小共用的是一个参数 导致 无法指定更改后的图片大小与剪切参数相同 不符合常理
+    // Kuro-P: 给frame数组增加了可选参数,[clipX, clipY, cvsW, cvsH, originX, originY[, imgWidth, imgHeight]]
+    // Kuro-P: 新增的两个参数是用来指定 图片剪切大小不是cvs上上的绘制大小
     changeImage(image,frame){
         this.image = image;
         this.frame = Utils.type.isArray(frame) ? frame : [0, 0, image.width, image.height];  //注意位图资源先加载
@@ -87,7 +90,7 @@ export default class Display extends Instance{
             context.strokeStyle="#aaa";
             context.strokeRect(0,0,this.width,this.height);
         }else{ //具体蒙皮方式渲染
-            context.drawImage(this.image, this.frame[0], this.frame[1], this.frame[2], this.frame[3], 0, 0, this.width, this.height);
+            context.drawImage(this.image, this.frame[0], this.frame[1], (this.frame[6] || this.frame[2]), (this.frame[7] || this.frame[3]), 0, 0, this.width, this.height);
         }
     }
 }
