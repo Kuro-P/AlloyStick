@@ -272,3 +272,4 @@ export default class AlloyStick{
 
 window.AlloyStick = AlloyStick;
 window.AlloyUtils = Utils;
+window.wanghe = () => console.log('wh');

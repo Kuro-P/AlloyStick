@@ -79,7 +79,7 @@ window.onload = function() {
                     img.onload = function(){
                         demoInstance.changeBoneImage('xiaoxiao','head',img,[0,0,66,66,-33,-33]);
                     };
-                    img.src = './data/texture.png';
+                    img.src = './data/texture_mine.png';
                 }
                 //测试js调用动作
                 if(e.key === 'b'){
