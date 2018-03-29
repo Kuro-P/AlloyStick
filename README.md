@@ -325,6 +325,6 @@ demoInstance.mapKeyToAni(
 
 This content is released under the GPL License.
 
-## fix bugs
+## Fix bugs
 
 · Fix stick man render order, fix part of bodyUp mask blocking head parts.
